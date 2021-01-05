@@ -182,18 +182,296 @@ print(id(Y))
 print(X)
 print(Y)
 
+print('#                                                                         #')
+print('#-------------------------------------------------------------------------#')
+# リストの使い方
+seat = []
+min = 0
+max = 5
+
+print(min <= len(seat) < max)
+seat.append('p')  #１人追加
+print(min <= len(seat) < max)
+seat.append('p')
+print(len(seat))
+
+seat.append('p')
+seat.append('p')
+
+print(min <= len(seat) < max)
+print(len(seat))
+
+print(min <= len(seat) < max)
+seat.append('p')
+print(len(seat))
+
+print(min <= len(seat) < max)
+
+seat.pop(0) #１人降りた
+print(min <= len(seat) < max)
 
 
+print('#                                                                         #')
+print('#-------------------------------------------------------------------------#')
+# タプルの使い方:値を入れたら、読み込むケースに使用する
+t = (1,2,3,4,1,2)
+print(t)
+print(type(t)) #値を代入することをサポートしていない　ex) t[0] = 100
+#他のとことは出来る
+print(t[0])
+print(t[-1])
+print(t[2:5])
+print(t.index(1))
+print(t.index(1,1))
+
+print(t.count(1))
+
+#タプルにリストを入れる
+t = ([1,2,3],[4,5,6])
+print(t)
+
+#タプルの０番目と１番目は変更できないがタプルないのリストは変更可能
+t[0][0] = 100 #タプル０番目のリスト野中の０番目　-->1
+print(t)
+
+#パレンティス（）がなくてもタプルは宣言できる
+t = 1,2,3,4,5,6,7,8,9
+print(t)
+print(type(t))
+
+#タプルの場合値が一つだけでもカンマがあればタプルになる
+t = 1,
+print(t)
+print(type(t))
+
+#空のタプル
+t = ()
+print(t)
+print(type(t))
+
+#()の中に１だけ入れた場合, イント型になる
+t = (1)
+print(t)
+print(type(t))
+
+#新しいタプルの場合は、繋げることができる
+new_tuple = (1,2,3) + (4,5,6)
+print(new_tuple)
+
+new_tuple = (1,) + (4,5,6)
+print(new_tuple)
+
+print('#                                                                         #')
+print('#-------------------------------------------------------------------------#')
+# タプルのアンパッキング
+
+num_tuple = (10, 20)
+print(num_tuple)
+x, y = num_tuple # --> x, y = (10, 20) :同じ意味
+#tupleではパレンティスの鉤括弧はいらないので、以下のようにかける
+#x, y = 10, 20
+print('x = ', x)
+print('y = ', y)
+
+min, max = 0, 100
+print(min, max)
+
+#数字の入れ替え
+i = 10
+j = 20
+tmp = i
+i = j
+j = tmp
+print(i, j)
+
+#tupleを使った数字の入れ替え
+a = 100
+b = 200
+print(a,b)
+a, b = b, a
+print(a,b)
+
+print('#-------------------------------------------------------------------------#')
+print('#                   　　　   タプルの使い所                                 #')
+
+#三つの選択肢の中から二つを選ぶ
+chose_from_two = ('A', 'B', 'C')
+answer = []
+answer.append('A')
+answer.append('C')
+
+print(chose_from_two)
+print(answer)
 
 
+print('#-------------------------------------------------------------------------#')
+print('#                             辞書型                                       #')
+
+d = {'x':10, 'y':20}
+print(d)
+print(type(d))
+
+#dのxの値をとる
+print(d['x'])
+#dのyの値をとる
+print(d['y'])
+
+#dのxに１００を代入する
+d['x'] = 100
+print(d)
+
+#文字列を代入
+d['x'] = 'XXXXX'
+print(d)
+
+#新しく値を代入
+d['z'] = 200
+print(d)
+
+#キーを数字に設定し値おを代入
+d[1] = 10000
+print(d)
+
+#辞書型の生成方法
+D = dict(a=10, b=20)
+print(D)
+
+#辞書型＋タプルの組み合わせ
+dtuple=dict([('a',10),('b', 20)])
+print(dtuple)
+
+print('#-------------------------------------------------------------------------#')
+print('#                           辞書型のメソッド                                 #')
+
+d = {'x':10, 'y':20}
+print(d)
 
 
+print(d.keys())
+print(d.values())
 
 
+d2 = {'x': 1000, 'j': 500}
+print('d2 =', d2)
+
+#dにd2の情報を上書きする、オーバーライトする
+d.update(d2)
+print(d)
+
+#dの値をとる
+print(d['x'])
+print(d.get('x'))
+
+#ない場所を指定すると
+r = d.get('z')
+print(r)
+print(type(r))
 
 
+#中身を取り出す
+print(d.pop('x'))
+print(d)
+
+print('#-------------------------------------------------------------------------#')
+print('#                             辞書型のcopy                                 #')
+
+x = {'a': 1}
+y = x
+y['a'] = 1000
+print(x)
+print(y) #参照渡しが起きてyにはxのアドレスが入ってる。
+
+x = {'a': 1}
+y = x.copy()
+y['a'] = 1000
+print(x)
+print(y)
 
 
+print('#-------------------------------------------------------------------------#')
+print('#                             辞書型の使い所                                #')
+#リスト型
+#appleをピックアップするときは、見つけるプログラムを書かないといけない。時間がかかる
+l = [
+    ['apple', 100],
+    ['banana', 200],
+    ['orange', 300],
+]
+
+
+#辞書型
+#キーで値を検索して値をとってきたい場合は、辞書型がいい。ハッシュテーブルを用いている。
+fruits = {
+    'apple': 100,
+    'banana': 200,
+    'orange': 300,
+}
+
+print(fruits['apple'])
+
+
+print('#-------------------------------------------------------------------------#')
+print('#                                 集合型                                   #')
+
+#辞書型のように{}で宣言した場合、重複している部分が消える.
+
+a = {1,2,3,4,4,4,5,6}
+print(a)
+
+#型を見てみるとset型になっている
+print(type(a))
+
+b = {2,3,3,6,7}
+print(b)
+
+
+print(a-b)
+print(b-a)
+print(a & b)
+print(a|b)
+print(a^b)
+
+
+print('#-------------------------------------------------------------------------#')
+print('#                              集合型のメソッド                              #')
+
+s = {1,2,3,4,5}
+print('s = ', s)
+
+#集合はインデックスがない、関係ない
+#s[0] --> Error
+
+s.add(6)
+print('s = ', s)
+
+#集合なので6を加えても変わらない
+s.add(6)
+print('s = ', s)
+
+#消す
+s.remove(6)
+print('s = ', s)
+
+s.clear()
+print('s = ', s)
+
+print(type(s))
+
+print('#-------------------------------------------------------------------------#')
+print('#                              集合型の使い所                              #')
+#自分の友達がいて、その友達と他の友達の共通の友達探すとか
+#何かの共通点を見つけ出すときに集合が使える
+
+my_friends = {'A', 'C', 'D'}
+A_friends = {'B','D', 'E', 'F'}
+
+print(my_friends & A_friends)
+
+
+#Listは集合へ型変換できる。重複を消せる
+f = ['apple', 'bannana','apple', 'bannana']
+kind = set(f)
+print(kind)
 
 
 
